@@ -1,0 +1,17 @@
+feature,area,priority,original,clone,notes
+Landing page design,must,present,Yes,No,Hero, feature grid, pricing table
+Sign up / Login workflow,must,present,Yes,No,Auth flows, social proof
+Workspace dashboard,must,present,Yes,No,Video grid, minutes counter, upload button
+Video upload modal,must,present,Yes,No,URL field, file dropzone, aspect ratio selector
+Processing progress view,must,present,Yes,No,Progress bar, 4-stage indicator, estimated time
+Clip review & triage,must,present,Yes,No,Clip grid, viral score badges, discard / favorite buttons
+Video editor & reframer,must,present,Yes,No,Timeline trimmer, AI reframe toggle, caption editor, overlay panels
+Clip library,must,present,Yes,No,Multi-select filters, batch export, delete / share
+Public share page,must,present,Yes,No,Single clip player, download button, embed code
+Post scheduler & calendar,must,present,Yes,No,Calendar grid, platform selector, caption composer, time picker
+MCP integration setup,must,present,Yes,No,API key generator, setup command, manual JSON config
+Workspace settings & billing,must,present,Yes,No,Plan management, member invitations, brand kit editor
+Error handling & edge cases,must,present,Yes,No,All states handled, fallbacks built in
+
+Features not yet implemented by original,must,missing,No,Yes,New clone priority
+TikTok auto-posting (audit fallback),private-only scheduling,Word-level transcript edit UI,split-screen gameplay background overlay,AI hook generator,AI video summarizer,video silence remover,youtube thumbnail downloader,minecraft video generator,subway surfers video generator,video resizer,video compressor,gaming highlight clipper,interview to clips,webinar to shorts,video highlight generator,talking head video editor,ai hook generator,ai captions,ai video editor,ai reframe,multi-platform export (beyond TikTok/Reels/Shorts),public share links,square frame layout,virality score prediction
