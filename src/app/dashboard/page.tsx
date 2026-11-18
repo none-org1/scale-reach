@@ -13,14 +13,18 @@ import {
   Search,
   MoreVertical,
   Clock,
-  ExternalLink
+  ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
+import Button from "@/components/Button";
+import UploadForm from "@/components/UploadForm";
+import Sidebar from "@/components/Sidebar";
 
 export default function DashboardPage() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!containerRef.current) return;
     gsap.fromTo(
       containerRef.current,
       { opacity: 0 },
@@ -36,49 +40,8 @@ export default function DashboardPage() {
 
   return (
     <div ref={containerRef} className="flex min-h-screen bg-bg">
-      {/* Sidebar */}
-      <aside className="w-64 border-r border-border flex flex-col p-4 space-y-8">
-        <div className="flex items-center gap-2 px-2">
-          <div className="w-8 h-8 bg-accent rounded flex items-center justify-center">
-            <Zap className="text-on-accent w-5 h-5 fill-current" />
-          </div>
-          <span className="font-bold text-xl tracking-tight">ScaleReach</span>
-        </div>
+      <Sidebar />
 
-        <nav className="flex-1 space-y-1">
-          <Link href="/dashboard" className="flex items-center gap-3 px-3 py-2 bg-surface text-accent rounded-md">
-            <LayoutDashboard size={18} />
-            <span className="font-medium">Dashboard</span>
-          </Link>
-          <Link href="/library" className="flex items-center gap-3 px-3 py-2 text-text-muted hover:text-text hover:bg-surface-hover rounded-md transition">
-            <Library size={18} />
-            <span className="font-medium">Library</span>
-          </Link>
-          <Link href="/scheduler" className="flex items-center gap-3 px-3 py-2 text-text-muted hover:text-text hover:bg-surface-hover rounded-md transition">
-            <Calendar size={18} />
-            <span className="font-medium">Scheduler</span>
-          </Link>
-          <Link href="/settings" className="flex items-center gap-3 px-3 py-2 text-text-muted hover:text-text hover:bg-surface-hover rounded-md transition">
-            <Settings size={18} />
-            <span className="font-medium">Settings</span>
-          </Link>
-        </nav>
-
-        <div className="bg-surface rounded-lg p-4 space-y-3">
-          <div className="flex justify-between items-center text-xs">
-            <span className="text-text-muted">Minutes Balance</span>
-            <span className="text-text">4,800 / 5,000</span>
-          </div>
-          <div className="w-full bg-bg h-1.5 rounded-full overflow-hidden">
-            <div className="bg-accent h-full w-[96%]" />
-          </div>
-          <button className="w-full py-2 text-xs font-semibold bg-accent/10 text-accent hover:bg-accent/20 rounded-md transition">
-            Upgrade Plan
-          </button>
-        </div>
-      </aside>
-
-      {/* Main Content */}
       <main className="flex-1 overflow-auto">
         <header className="h-16 border-b border-border flex items-center justify-between px-8 bg-bg/50 backdrop-blur-md sticky top-0 z-10">
           <div className="relative w-96">
@@ -89,10 +52,7 @@ export default function DashboardPage() {
               className="w-full bg-surface border border-border-input rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-accent transition"
             />
           </div>
-          <button className="bg-accent hover:bg-accent-hover text-on-accent px-4 py-2 rounded-md font-semibold flex items-center gap-2 transition text-sm">
-            <Plus size={18} />
-            New Project
-          </button>
+          <UploadForm />
         </header>
 
         <div className="p-8 space-y-8">
@@ -103,16 +63,26 @@ export default function DashboardPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {videos.map((video) => (
-              <div key={video.id} className="group bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/50 transition cursor-pointer">
+              <div
+                key={video.id}
+                className="group bg-surface border border-border rounded-xl overflow-hidden hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300 cursor-pointer"
+              >
                 <div className="aspect-video relative overflow-hidden">
-                  <img src={video.thumbnail} alt={video.title} className="object-cover w-full h-full group-hover:scale-105 transition duration-500" />
+                  <img
+                    src={video.thumbnail}
+                    alt={video.title}
+                    className="object-cover w-full h-full group-hover:scale-105 transition duration-500"
+                  />
                   <div className="absolute bottom-2 right-2 bg-black/70 px-1.5 py-0.5 rounded text-[10px] font-bold">
                     {video.duration}
                   </div>
-                  {video.status === 'processing' && (
+                  {video.status === "processing" && (
                     <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-4 space-y-3">
                       <div className="w-full max-w-[150px] bg-white/20 h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-accent h-full transition-all" style={{ width: `${video.progress}%` }} />
+                        <div
+                          className="bg-accent h-full transition-all"
+                          style={{ width: `${video.progress}%` }}
+                        />
                       </div>
                       <span className="text-xs font-medium">Processing... {video.progress}%</span>
                     </div>

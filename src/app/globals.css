@@ -2,43 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --bg: #090a0f;
-    --surface: #12141c;
-    --surface-hover: #1a1d28;
-    --border: #222634;
-    --border-input: #2e3448;
-    --text: #f3f4f6;
-    --text-muted: #9ca3af;
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
-    --on-accent: #ffffff;
-    --danger: #ef4444;
-    --success: #22c55e;
-    --warning: #f59e0b;
-  }
+:root {
+  --bg: #0a0b10;
+  --surface: #13151f;
+  --surface-hover: #1a1d2b;
+  --border: #252838;
+  --border-input: #2e3144;
+  --text: #e8e9f0;
+  --text-muted: #888ba5;
+  --accent: #22d3ee;
+  --accent-hover: #06b6d4;
+  --on-accent: #06121a;
+  --viral: #f59e0b;
+  --danger: #ef4444;
+  --success: #22c55e;
 }
 
+html,
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Custom smooth scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #090a0f;
+  background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #222634;
-  border-radius: 4px;
+  background: var(--border);
+  border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e3448;
+  background: var(--border-input);
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-on-accent hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply btn bg-surface text-text border border-border hover:bg-surface-hover hover:border-accent/50;
+  }
+  .btn-ghost {
+    @apply btn text-text-muted hover:text-text hover:bg-surface-hover;
+  }
+  .btn-danger {
+    @apply btn bg-danger text-white hover:bg-danger/90;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-sm;
+  }
+  .btn-md {
+    @apply px-4 py-2 text-sm;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
 }
