@@ -3,25 +3,29 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0b10;
-  --surface: #13151f;
-  --surface-hover: #1a1d2b;
-  --border: #252838;
-  --border-input: #2e3144;
-  --text: #e8e9f0;
-  --text-muted: #888ba5;
-  --accent: #22d3ee;
-  --accent-hover: #06b6d4;
-  --on-accent: #06121a;
+  --bg: #000000;
+  --surface: #131315;
+  --surface-raised: #1a1b1f;
+  --surface-hover: #1f2025;
+  --border: #232327;
+  --border-input: #2e3038;
+  --text: #f4f4f5;
+  --text-muted: #9a9aa4;
+  --text-tertiary: #aaaaaa;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --on-accent: #ffffff;
   --viral: #f59e0b;
   --danger: #ef4444;
   --success: #22c55e;
+  --warning: #f59e0b;
 }
 
 html,
 body {
   background-color: var(--bg);
   color: var(--text);
+  font-family: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
